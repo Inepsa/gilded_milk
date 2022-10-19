@@ -1,4 +1,6 @@
 
+progressbar = exports.vorp_progressbar:initiate()
+
 RegisterNetEvent("gilded_milk:try_search")
 RegisterNetEvent("gilded_milk:do_search")
 RegisterNetEvent("gilded_milk:abort_search")
@@ -15,7 +17,8 @@ end)
 AddEventHandler("gilded_milk:do_search",function(nestIndex, searchTime)
 	local playerPed = PlayerPedId()
 	TaskStartScenarioInPlace(playerPed, GetHashKey('WORLD_HUMAN_CROUCH_INSPECT'), searchTime, true, false, false, false)
-	exports['progressBars']:startUI(searchTime, _U("searching"))
+	--exports['progressBars']:startUI(searchTime, _U("searching"))
+	progressbar.start(_U("searching"), searchTime, 'linear' )
 	Citizen.Wait(searchTime)
 	ClearPedTasksImmediately(playerPed)
 	nearest = 0
@@ -110,8 +113,9 @@ Citizen.CreateThread(function()
 						end
 						TaskPlayAnim(PlayerPedId(), "amb_work@world_human_farmer_weeding@male_a@idle_a", "idle_a", 8.0, -8.0, 8000, 1, 0, true, 0, false, 0, false)
 					end
-					exports['progressBars']:startUI(12000, 'Milking cow ...')
-					Wait(20000)
+					--exports['progressBars']:startUI(8000, 'Milking cow ...')
+					progressbar.start('Milking cow ...', 8000, 'linear' )
+					Wait(9000)
 					FreezeEntityPosition(targetEntity, false)
 					FreezeEntityPosition(PlayerPedId(), false)
 					local item = "milk"
