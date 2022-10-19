@@ -129,3 +129,15 @@ AddEventHandler("onResourceStart",function(resourceName)
 		end
 	end
 end)
+
+
+
+-----Code for milking actual cows in the field.
+VORPInv = exports.vorp_inventory:vorp_inventoryApi()
+
+RegisterServerEvent('Gilded:Prize')
+AddEventHandler('Gilded:Prize', function(item, count)
+	local _source = source
+	VORPInv.addItem(_source, item, count)
+	TriggerClientEvent("vorp:TipRight", _source, "You got ".. count.. "x ".. item, 5000)
+end)

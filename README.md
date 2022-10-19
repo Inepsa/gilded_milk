@@ -1,5 +1,7 @@
 # gilded_milk
-RedM resource allowing players to bottle milk at locations setup around the map. This has ymaps for milk canisters in some spots where they are not native
+RedM resource allowing players to bottle milk at locations setup around the map.
+You can also milk cows standing in the field. Sneak up, right click focus, prompt will show when close. 
+This has ymaps for milk canisters in some spots where they are not native
 
 # Requirements
 - VORP Core 
